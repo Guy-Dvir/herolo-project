@@ -1,0 +1,15 @@
+app-book button{
+    background: none;
+    border:none;
+    cursor: pointer;
+}
+
+app-book button:focus{
+    outline: none;
+}
+
+app-book button:after {
+    content: '\2807';
+    font-size: 2em;
+    color: #999999
+  }
