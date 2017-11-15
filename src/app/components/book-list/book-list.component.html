@@ -1,0 +1,37 @@
+<div class="row">
+    <form class="input-group input-group-lg col-md-12" [formGroup]="bForm" (ngSubmit)="addBook(bForm.value)">
+        <div class="row">
+            <div class="col-md-10">
+                <fieldset class="row">
+                    <label class="col-md-12"> Book Title
+                        <input type="text" class="form-control" formControlName="bTitle" [(ngModel)]="bForm.value.bTitle">
+                    </label>
+                </fieldset>
+                <div class="row">
+                    <fieldset class="col-lg-6">
+                        <label> Author
+                            <input type="text" class="form-control" formControlName="bAuthor" [(ngModel)]="bForm.value.bAuthor">
+                        </label>
+                    </fieldset>
+                    <fieldset class="col-lg-6">
+                        <label> Publication Date
+                            <input type="text" class="form-control" formControlName="bDate" [(ngModel)]="bForm.value.bDate">
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="add_book_btn">
+                    <button class="btn" type="submit" [disabled]="!bForm.valid">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <ul class="list-group col-md-12">
+        <app-book *ngFor="let book of books" [book]="book"></app-book>
+    </ul>
+</div>

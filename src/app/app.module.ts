@@ -1,30 +1,29 @@
+import { RemoveSpecialChars } from './pipes/remove-special-chars.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { BookListComponent } from './books/book-list/book-list.component';
-import { BookComponent } from './books/book/book.component';
-import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
-import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
-import { CreateModalComponent } from './modals/create-modal/create-modal.component';
-import { ModalBaseComponent } from './modals/modal-base/modal-base.component';
-
+import { BookListComponent } from './components/book-list/book-list.component';
+import { BookComponent } from './components/book/book.component';
+import { BookEditComponent } from './components/book-edit/book-edit.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+  ],
   declarations: [
+    RemoveSpecialChars,    
     AppComponent,
     BookListComponent,
     BookComponent,
-    EditModalComponent,
-    DeleteModalComponent,
-    CreateModalComponent,
-    ModalBaseComponent
+    BookEditComponent,
   ],
-  imports: [
-    BrowserModule
+  providers: [    
+    FormBuilder,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

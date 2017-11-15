@@ -13,3 +13,7 @@ app-book button:after {
     font-size: 2em;
     color: #999999
   }
+
+.meta h2{
+    text-transform: capitalize;
+}
