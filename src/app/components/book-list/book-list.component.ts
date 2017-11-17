@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GetJsonService } from './../../services/get-json.service';
 
 @Component({
   selector: 'app-book-list',
@@ -7,61 +8,55 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./book-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class BookListComponent implements OnInit {
   bForm: FormGroup;
+  bMeta: any = {
+    bDate: null,
+    bAuthor: null,
+    bTitle: null
+  }
 
-  constructor(private fb: FormBuilder) {
+  books: any
+
+
+
+  constructor(private fb: FormBuilder, private _getJson: GetJsonService) {
+
+    // getJson.load().then((data) => {
+    //   console.log("what is in the data " + data);
+    //   this.books = JSON.stringify(data);
+    // });
+
     this.bForm = fb.group({
-      'bDate': ["", Validators.required],
-      'bTitle': ["", Validators.required],
-      'bAuthor': ["", Validators.required]
+      'date': ["", Validators.required],
+      'title': ["", Validators.required],
+      'author': ["", Validators.required]
     })
   }
 
+  ngOnInit() {
+    this._getJson.load().subscribe(res => {this.books = res;})
+  }
   private addBook(bDetails) {
     let books = this.books;
-    //let books = JSON.parse(this.books);    
 
-    if (bDetails)
-      books.push({
-        "author": <string>bDetails.bAuthor,
-        "date": <string>bDetails.bDate,
-        "title": <string>bDetails.bTitle
+    if (bDetails) {
+      this.bMeta.bDate = bDetails.date;
+      this.bMeta.bAuthor = bDetails.author;
+      this.bMeta.bTitle = bDetails.title;
+
+      books.unshift({
+        "author": this.bMeta.bAuthor,
+        "date": this.bMeta.bDate,
+        "title": this.bMeta.bTitle
       });
-      
-    for (let key in bDetails) {
-      bDetails[key] = "";
+    }
+
+    for (let key in this.bMeta) {
+      this.bMeta[key] = null;
     }
   }
 
-  ngOnInit() {
-  }
-
-
-
-
-
-  books = [
-    {
-      author: "auth",
-      date: "12.2.99",
-      title: "my bo@@@@ok1",
-    },
-    {
-      author: "looloo",
-      date: "12.2.94",
-      title: "my bo*%&@@@ok2",
-    },
-    {
-      author: "didi",
-      date: "12.2.93",
-      title: "my book3",
-    },
-    {
-      author: "didilolo",
-      date: "12.2.93",
-      title: "my book4",
-    }
-  ]
 
 }

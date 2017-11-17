@@ -1,3 +1,5 @@
+import { HttpModule, JsonpModule } from '@angular/http';
+import { GetJsonService } from './services/get-json.service';
 import { RemoveSpecialChars } from './pipes/remove-special-chars.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,16 +15,19 @@ import { BookEditComponent } from './components/book-edit/book-edit.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpModule,
+    JsonpModule
   ],
   declarations: [
     RemoveSpecialChars,    
     AppComponent,
     BookListComponent,
     BookComponent,
-    BookEditComponent,
+    BookEditComponent
   ],
   providers: [    
     FormBuilder,
+    GetJsonService
   ],
   bootstrap: [AppComponent]
 })
