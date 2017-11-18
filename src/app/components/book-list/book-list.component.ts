@@ -18,26 +18,21 @@ export class BookListComponent implements OnInit {
   }
 
   books: any
-
-
-
+  bookToEdit:object;
+  editId:number;
+  
   constructor(private fb: FormBuilder, private _getJson: GetJsonService) {
-
-    // getJson.load().then((data) => {
-    //   console.log("what is in the data " + data);
-    //   this.books = JSON.stringify(data);
-    // });
-
     this.bForm = fb.group({
       'date': ["", Validators.required],
       'title': ["", Validators.required],
       'author': ["", Validators.required]
-    })
+    });    
   }
 
   ngOnInit() {
-    this._getJson.load().subscribe(res => {this.books = res;})
+    this._getJson.load().subscribe(res => { this.books = res; });
   }
+
   private addBook(bDetails) {
     let books = this.books;
 
@@ -53,9 +48,24 @@ export class BookListComponent implements OnInit {
       });
     }
 
+
     for (let key in this.bMeta) {
       this.bMeta[key] = null;
     }
+  }
+
+  removeBook(id: number) {
+    this.books.splice(id, 1)
+  }
+
+  editBook(id:number){
+    this.editId = id;
+    this.bookToEdit = this.books[this.editId];
+  }
+
+  saveEdit(data:object){
+    console.log(data)
+    this.books[this.editId] = data;
   }
 
 

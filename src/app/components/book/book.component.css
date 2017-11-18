@@ -8,12 +8,6 @@ app-book button:focus{
     outline: none;
 }
 
-app-book button:after {
-    content: '\2807';
-    font-size: 2em;
-    color: #999999
-  }
-
 .meta h2{
     text-transform: capitalize;
 }

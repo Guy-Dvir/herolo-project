@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-book-edit',
@@ -6,11 +7,31 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./book-edit.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BookEditComponent implements OnInit {
+export class BookEditComponent {
+  eForm: FormGroup;
+  private _eMeta: object;
 
-  constructor() { }
+  @Input('bookToEdit')
+  set eMeta(value: object) {
+    this._eMeta = value;
+  }
+  get eMeta(): object {
+    return this._eMeta;
+  }
 
-  ngOnInit() {
+  @Output() saveEdit: EventEmitter<object> = new EventEmitter<object>();
+
+  constructor(private fb: FormBuilder) {
+    this.eForm = fb.group({
+      'dateEdit': ["", Validators.required],
+      'titleEdit': ["", Validators.required],
+      'authorEdit': ["", Validators.required]
+    });
+  }
+
+  notifyEditSave(eDetails): void {
+    console.log(eDetails)
+    //this.saveEdit.emit(this.eMeta);
   }
 
 }

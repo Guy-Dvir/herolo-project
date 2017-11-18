@@ -5,10 +5,10 @@ import 'rxjs/Rx';
 @Injectable()
 
 export class GetJsonService {
+  private _bookCollection;
+  constructor(private _http: Http) {}
 
-  constructor(private _http: Http) { }
-
-  load(){
+  load() {
     return this._http.get('data/books-info.json').map(response => {
       return response.json();
     });

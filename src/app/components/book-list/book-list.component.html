@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="input-group input-group-lg col-md-12" [formGroup]="bForm" (ngSubmit)="addBook(bForm.value)">
+    <form [formGroup]="bForm" (ngSubmit)="addBook(bForm.value)">
         <div class="row">
             <div class="col-md-10">
                 <fieldset class="row">
@@ -23,7 +23,7 @@
             <div class="col-md-2">
                 <div class="add_book_btn">
                     <button class="btn" type="submit" [disabled]="!bForm.valid">
-                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>+</span>
                     </button>
                 </div>
             </div>
@@ -32,6 +32,7 @@
 </div>
 <div class="row">
     <ul class="list-group col-md-12">
-        <app-book *ngFor="let book of books" [book]="book"></app-book>
+        <app-book *ngFor="let book of books; let i = index" [book]="book" [bookId] ="i"  (removeBook)="removeBook($event)" (editBook)="editBook($event)"></app-book>
     </ul>
+    <app-book-edit *ngIf="bookToEdit" [bookToEdit]="bookToEdit" (saveEdit)="saveEdit($event)"></app-book-edit>
 </div>
