@@ -16,6 +16,9 @@ export class BookComponent{
   @Output() editBook: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
+    if(typeof this.book =="undefined"){
+      this.book = {title:"",author:"",date:""};
+    }
   }
 
   notify(type) {

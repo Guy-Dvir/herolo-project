@@ -43,7 +43,7 @@ export class BookListComponent implements OnInit {
     this._getJson.load().subscribe(res => { this.books = res; });
   }
 
-  private addBook(bDetails) {
+  addBook(bDetails) {
     let books = this.books;
     this.inputErr = false;
 
