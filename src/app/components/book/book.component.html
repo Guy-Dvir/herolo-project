@@ -6,10 +6,9 @@
             <small class="small">Published: {{book.date}}</small>
         </div>
         <div class="controls">
-            <button (click)="notifyEdit()" type="button" [id]="bookId" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
-                {{bookId}}
+            <button (click)="notify('edit')" type="button" [id]="bookId" data-toggle="modal" data-target="#editModal">
             </button>
-            <button class="removeBtn" (click)="notifyRemove()">R</button>
+            <button class="removeBtn" (click)="notify('remove')"></button>
         </div>
     </div>
 </li>

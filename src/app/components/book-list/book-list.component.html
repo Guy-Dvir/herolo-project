@@ -21,7 +21,7 @@
                         </fieldset>
                         <fieldset class="col-lg-6">
                             <label>
-                                <input type="text" class="form-control" formControlName="bDate" [(ngModel)]="bMeta.bDate">
+                                <input type="text" class="form-control" formControlName="bDate" [ngModel]="bMeta.bDate" (ngModelChange)="valiDate($event)">
                                 <span>Publication Date</span>
                             </label>
                         </fieldset>
@@ -35,16 +35,19 @@
                     </div>
                 </div>
             </div>
+            <div *ngIf="inputErr" class="row">
+                <div class="col-md-12">
+                    <p class="err_msg">{{errMsg}}</p>
+                </div>
+            </div>
         </form>
     </div>
     <div class="row justify-content-center">
         <ul class="list-group col-md-12">
             <app-book *ngFor="let book of books; let i = index" [book]="book" [bookId]="i" (removeBook)="removeBook($event)" (editBook)="editBook($event)"></app-book>
         </ul>
-        <app-book-edit *ngIf="bookToEdit" 
-        [bookTitle]="bookToEdit.title"
-        [bookAuthor]="bookToEdit.author"
-        [bookDate]="bookToEdit.date" 
-        (saveEdit)="saveEdit($event)"></app-book-edit>
+        <h3 class="no_books" *ngIf="books && books.length==0">You Have no Books... <br> It's Reading Time!!</h3>
+        <app-book-edit *ngIf="bookToEdit" [bookTitle]="bookToEdit.title" [bookAuthor]="bookToEdit.author" [bookDate]="bookToEdit.date"
+            (saveEdit)="saveEdit($event)"></app-book-edit>
     </div>
 </div>

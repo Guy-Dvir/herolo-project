@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-book',
@@ -7,25 +7,26 @@ import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } fro
   encapsulation: ViewEncapsulation.None
 })
 
-export class BookComponent implements OnInit {
+export class BookComponent{
 
   @Input() book: object;
-  @Input() bookId:number;
-  
-  @Output() removeBook:EventEmitter<number> = new EventEmitter<number>();
-  @Output() editBook:EventEmitter<number> = new EventEmitter<number>();
-  
+  @Input() bookId: number;
+
+  @Output() removeBook: EventEmitter<number> = new EventEmitter<number>();
+  @Output() editBook: EventEmitter<number> = new EventEmitter<number>();
+
   constructor() {
   }
 
-  notifyRemove():void{
-    this.removeBook.emit(this.bookId);
-  }
+  notify(type) {
+    switch (type) {
+      case 'remove':
+      this.removeBook.emit(this.bookId);      
+        break;
 
-  notifyEdit(){
-    this.editBook.emit(this.bookId);
-  }
-  
-  ngOnInit() {
+      case 'edit':
+      this.editBook.emit(this.bookId);      
+        break;
+    }
   }
 }

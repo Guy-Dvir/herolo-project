@@ -1,17 +1,22 @@
 [
   {
-    "author": "looloo",
-    "date": "12.2.94",
-    "title": "my bo*%&@@@ok2"
+    "author": "J/K/ Rowling",
+    "date": "2/11/2001",
+    "title": "Harry Potter and the chamber of secretes"
   },
   {
-    "author": "didi",
-    "date": "12.2.93",
-    "title": "my book3"
+    "author": "Yan Mertel",
+    "date": "4/23/2005",
+    "title": "Life of PI"
   },
   {
-    "author": "didilolo",
-    "date": "12.2.93",
-    "title": "my book4"
+    "author": "Thomas Harris",
+    "date": "10/15/86",
+    "title": "Silence Of The Lambs"
+  },
+  {
+    "author": "Guy Dvir",
+    "date": "10/15/17",
+    "title": "Memories of a Front End Dev"
   }
 ]

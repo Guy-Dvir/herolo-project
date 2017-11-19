@@ -13,6 +13,15 @@ app-book .meta {
     letter-spacing: .08em;    
 }
 
+app-book .meta h3,
+app-book .meta p,
+app-book .meta small{
+    max-width: 180px;
+    white-space: nowrap;    
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
 app-book .meta h3{
     margin: -2px 0 5px 0;  
     text-transform: capitalize;
@@ -40,4 +49,23 @@ app-book button{
 
 app-book button:focus{
     outline: none;
+}
+
+.controls button{
+    border-radius:50%;
+    height:45px ;
+    width:45px ;
+    padding:10px ;
+    border: 1px solid var(--main-cyan);
+    margin-left:5px;
+    background-image: url('../../../assets/blIcons.svg');
+    background-repeat: no-repeat;
+    background-position: -37px 9px;
+    background-size: 175%;    
+}
+
+.controls button:last-child{
+    border-color: red;
+    background-position: -30px -25px ;   
+    background-size: 150%;    
 }
