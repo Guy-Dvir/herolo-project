@@ -9,3 +9,18 @@
   .modal-backdrop.in {
     opacity: 0.5;
   }
+
+#editModal fieldset label span{
+  position: absolute;
+  top: 50%;
+  transform: translate(28px, -50%);
+  z-index: 0;
+  transition: .3s ease;
+  color: var(--txt-gray-lighter)!important;
+}
+
+#editModal fieldset input:focus + span,
+#editModal fieldset input.ng-valid + span
+{
+    transform: translate(18px, -140%) scale(0.80);
+}

@@ -23,9 +23,11 @@ export class BookListComponent implements OnInit {
   
   constructor(private fb: FormBuilder, private _getJson: GetJsonService) {
     this.bForm = fb.group({
-      'date': ["", Validators.required],
-      'title': ["", Validators.required],
-      'author': ["", Validators.required]
+      'bDate': ["", [Validators.required, 
+        Validators.pattern(
+          '^(?:(?:10|12|0?[13578])/(?:3[01]|[12][0-9]|0?[1-9])/(?:1[8-9]\\d{2}|[2-9]\\d{3})|(?:11|0?[469])/(?:30|[12][0-9]|0?[1-9])/(?:1[8-9]\\d{2}|[2-9]\\d{3})|0?2/(?:2[0-8]|1[0-9]|0?[1-9])/(?:1[8-9]\\d{2}|[2-9]\\d{3})|0?2/29/[2468][048]00|0?2/29/[3579][26]00|0?2/29/[1][89][0][48]|0?2/29/[2-9][0-9][0][48]|0?2/29/1[89][2468][048]|0?2/29/[2-9][0-9][2468][048]|0?2/29/1[89][13579][26]|0?2/29/[2-9][0-9][13579][26])$')]],
+      'bTitle': ["", Validators.required],
+      'bAuthor': ["", Validators.required]
     });    
   }
 
@@ -37,9 +39,9 @@ export class BookListComponent implements OnInit {
     let books = this.books;
 
     if (bDetails) {
-      this.bMeta.bDate = bDetails.date;
-      this.bMeta.bAuthor = bDetails.author;
-      this.bMeta.bTitle = bDetails.title;
+      this.bMeta.bDate = bDetails.bDate;
+      this.bMeta.bAuthor = bDetails.bAuthor;
+      this.bMeta.bTitle = bDetails.bTitle;
 
       books.unshift({
         "author": this.bMeta.bAuthor,
@@ -64,7 +66,6 @@ export class BookListComponent implements OnInit {
   }
 
   saveEdit(data:object){
-    console.log(data)
     this.books[this.editId] = data;
   }
 
