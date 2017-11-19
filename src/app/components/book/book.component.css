@@ -1,3 +1,37 @@
+app-book .list-group-item{
+    border:none;
+    box-shadow: var(--box-shadow-softer);
+    margin: 12px 0;
+    border-radius: 5rem!important;
+    padding: 10px 50px;
+}
+
+app-book .meta {
+    font-size: 0.8em;
+    line-height: 1em;
+    color:var(--txt-gray);
+    letter-spacing: .08em;    
+}
+
+app-book .meta h3{
+    margin: -2px 0 5px 0;  
+    text-transform: capitalize;
+    font-size: 1.3em;
+    color:var(--main-cyan);
+    font-family: 'Palanquin Dark', sans-serif;
+}
+
+app-book .meta p{
+    background: var(--main-cyan);
+    color:white;
+    padding: 3px 6px;
+    width:fit-content;
+}
+
+app-book .meta small{
+    letter-spacing: 0.02em;
+}
+
 app-book button{
     background: none;
     border:none;
@@ -6,8 +40,4 @@ app-book button{
 
 app-book button:focus{
     outline: none;
-}
-
-.meta h2{
-    text-transform: capitalize;
 }

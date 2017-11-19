@@ -1,0 +1,85 @@
+#bookList .book_list_wrap{
+    top:50%;
+    left:50%;
+    transform: translate(-50%,50%);
+    width:450px;
+    box-shadow: 0 15px 10px -10px rgba(0,0,0,0.3), 0 0 30px rgba(0,0,0,0.2);
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+#bookList .book_list_wrap > .row:last-child{
+    margin-top: 20px;
+}
+
+#bookList h2{
+    text-align: center;
+    font-family: 'Palanquin Dark', sans-serif;
+    color:var(--main-action);
+}    
+
+#bookList fieldset label{
+    position: relative;
+    margin-top:20px;    
+}
+
+#bookList fieldset label span{
+    position: absolute;
+    top: 50%;
+    transform: translate(28px, -50%);
+    z-index: 0;
+    transition: .3s ease;
+    color: var(--txt-gray-lighter)!important;
+}
+
+#bookList fieldset input:focus + span,
+#bookList fieldset input.ng-valid + span
+{
+    transform: translate(18px, -140%) scale(0.80);
+}
+
+#bookList input[type="text"]{
+    position: relative;
+    border: none;
+    background: transparent;
+    border-bottom:1px solid var(--main-cyan);
+    border-radius: 0;
+    z-index: 1;
+    padding-left: 2px;
+    margin-left: 25px;
+}
+
+#bookList .add_book_row{
+    position: relative;
+    perspective: 200px;
+}
+
+#bookList .addBtn{
+    position: absolute;
+    top:60%;
+    left:52%;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: var(--main-action);
+    color: white;
+    font-size: 45px;
+    padding-bottom: 10px;
+    line-height: 0;
+    transform: translate3d(-50%, -50%, 0);
+    box-shadow: var(--box-shadow);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+#bookList .addBtn[disabled]{
+    box-shadow: none;
+    opacity: 0.2;
+}
+
+#bookList .list-group{
+    height: 60vh;
+    overflow: auto;
+    padding: 10px;
+}

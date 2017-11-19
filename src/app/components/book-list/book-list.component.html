@@ -1,38 +1,46 @@
-<div class="row">
-    <form [formGroup]="bForm" (ngSubmit)="addBook(bForm.value)">
-        <div class="row">
-            <div class="col-md-10">
-                <fieldset class="row">
-                    <label class="col-md-12"> Book Title
-                        <input type="text" class="form-control" formControlName="title" [(ngModel)]="bMeta.bTitle">
-                    </label>
-                </fieldset>
-                <div class="row">
-                    <fieldset class="col-lg-6">
-                        <label> Author
-                            <input type="text" class="form-control" formControlName="author" [(ngModel)]="bMeta.bAuthor">
+<div class="book_list_wrap">
+    <div class="row">
+        <h2 class="col-md-12">My Books</h2>
+    </div>
+    <div class="row">
+        <form [formGroup]="bForm" (ngSubmit)="addBook(bForm.value)">
+            <div class="row" add_book_row>
+                <div class="col-md-9">
+                    <fieldset class="row">
+                        <label class="col-md-12">
+                            <input type="text" class="form-control" formControlName="title" [(ngModel)]="bMeta.bTitle">
+                            <span>Book Title</span>
                         </label>
                     </fieldset>
-                    <fieldset class="col-lg-6">
-                        <label> Publication Date
-                            <input type="text" class="form-control" formControlName="date" [(ngModel)]="bMeta.bDate">
-                        </label>
-                    </fieldset>
+                    <div class="row">
+                        <fieldset class="col-lg-6">
+                            <label>
+                                <input type="text" class="form-control" formControlName="author" [(ngModel)]="bMeta.bAuthor">
+                                <span>Author</span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="col-lg-6">
+                            <label>
+                                <input type="text" class="form-control" formControlName="date" [(ngModel)]="bMeta.bDate">
+                                <span>Publication Date</span>
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="add_book_btn">
+                        <button class="btn addBtn" type="submit" [disabled]="!bForm.valid">
+                            <span>+</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="add_book_btn">
-                    <button class="btn" type="submit" [disabled]="!bForm.valid">
-                        <span>+</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-<div class="row">
-    <ul class="list-group col-md-12">
-        <app-book *ngFor="let book of books; let i = index" [book]="book" [bookId] ="i"  (removeBook)="removeBook($event)" (editBook)="editBook($event)"></app-book>
-    </ul>
-    <app-book-edit *ngIf="bookToEdit" [bookToEdit]="bookToEdit" (saveEdit)="saveEdit($event)"></app-book-edit>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <ul class="list-group col-md-12">
+            <app-book *ngFor="let book of books; let i = index" [book]="book" [bookId]="i" (removeBook)="removeBook($event)" (editBook)="editBook($event)"></app-book>
+        </ul>
+        <app-book-edit *ngIf="bookToEdit" [bookToEdit]="bookToEdit" (saveEdit)="saveEdit($event)"></app-book-edit>
+    </div>
 </div>

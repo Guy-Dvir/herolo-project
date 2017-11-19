@@ -10,12 +10,21 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="eForm" (ngSubmit)="notifyEditSave(eForm.value)">
-          <label>Title:</label>
-          <input type="text" formControlName="titleEdit" [(ngModel)]="eMeta.title">
-          <label>Author:</label>
-          <input type="text" formControlName="authorEdit" [(ngModel)]="eMeta.author">
-          <label>Date:</label>
-          <input type="text" formControlName="dateEdit" [(ngModel)]="eMeta.date">
+          <fieldset class="row">
+            <label class="col-md-12">Title:
+              <input class="form-control" type="text" formControlName="titleEdit" [(ngModel)]="eMeta.title">
+            </label>
+          </fieldset>
+          <fieldset class="row">
+            <label class="col-md-12">Author:
+              <input class="form-control" type="text" formControlName="authorEdit" [(ngModel)]="eMeta.author">
+            </label>
+          </fieldset>
+          <fieldset class="row">
+            <label class="col-md-12">Date:
+              <input class="form-control" type="text" formControlName="dateEdit" [(ngModel)]="eMeta.date">
+            </label>
+          </fieldset>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Save changes</button>
         </form>

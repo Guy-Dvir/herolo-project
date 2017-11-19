@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+body *{
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+body *:focus{
+    outline: none;
+}
+
+.form-control:focus{
+    border:none;
+    box-shadow: none;
+}
+
+:root{
+    --box-shadow: 0 0 25px rgba(73, 112, 101, 0.3);
+    --box-shadow-softer: 0 5px 25px rgba(73, 112, 101,0.15);
+    --main-cyan: rgb(20, 188, 197);
+    --main-action:rgb(223, 90, 49);
+    --txt-gray:rgb(155, 155, 155);
+    --txt-gray-lighter:rgb(199, 198, 198);
+}

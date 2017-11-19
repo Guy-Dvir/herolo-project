@@ -1,0 +1,16 @@
+ h1{
+    position: fixed;
+    top:20px;
+    left:20px;
+    font-family: 'Pattaya', sans-serif;
+    -webkit-text-stroke: 10px black;  
+    font-size: 35px;  
+}
+ h1:after{
+    content:"BookLog";
+    position: absolute;
+    top:0;
+    left:15px;
+    color: var(--main-action);  
+    -webkit-text-stroke: 0;        
+}
